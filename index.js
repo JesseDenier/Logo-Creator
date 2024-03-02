@@ -2,24 +2,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// Links the classes and associated properties.
+// Links the connected js files and their returns.
 const { Shape, Circle, Triangle, Square } = require("./lib/shapes");
+const validateColor = require("./lib/validateColorFunc");
 
 // Loads the inquirer max length package into the javascript and sets the type name.
 const MaxLengthInputPrompt = require("inquirer-maxlength-input-prompt");
 inquirer.registerPrompt("maxLength", MaxLengthInputPrompt);
-
-// Constant values for user inputs to be compared to and checked for validity.
-const hexRegex = /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/;
-const keywordColors = require("./lib/keywordColors");
-
-function validateColor(input) {
-  if (keywordColors.includes(input.toLowerCase()) || hexRegex.test(input)) {
-    return true;
-  } else {
-    return "Please enter a valid color keyword or hexadecimal value.";
-  }
-}
 
 // Build shape based on user's choice.
 function buildLogo(answers) {
@@ -44,7 +33,7 @@ function buildLogo(answers) {
 
 // Save the SVG as Logo.svg
 function saveLogo(logoSVG) {
-  fs.writeFile("Logo.svg", logoSVG, (err) => {
+  fs.writeFile("Logo.svg", logoSVG, { flag: "w" }, (err) => {
     if (err) {
       console.error("Error saving SVG:", err);
     } else {
