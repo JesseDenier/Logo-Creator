@@ -1,0 +1,5 @@
+
+      <svg width="300" height="200">
+        <polygon points="150,37.5 225,162.5 75,162.5" fill="#a9d034"/>
+        <text x="50%" y="64%" text-anchor="middle" alignment-baseline="middle" font-family="Arial" font-size="40" fill="#D92321">123</text>
+      </svg>
